@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Portraits - Amanda Leung</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff; 
+        }
+
+        /* ★修改 2: 這裡移除了 CSS column 排版，改用 JS 控制 ★ */
+        /* 修改這段 CSS */
+.masonry-item {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+/* ★ 新增這段：強制圖片等高並裁切 ★ */
+.masonry-item img {
+    height: 600px; /* 你可以根據喜好調整這個高度，例如 300px 或 500px */
+    width: 100%;
+    object-fit: cover; /* 這個屬性很重要，它會保持比例裁切圖片，不會變形 */
+}
+
+@media (min-width: 768px) {
+    .masonry-item { width: 50%; }
+}
+@media (min-width: 1024px) {
+    .masonry-item { width: 33.333%; }
+}
+    </style>
+</head>
+<body class="antialiased text-gray-900">
+
+    <nav class="absolute top-0 left-0 w-full px-8 py-6 flex justify-between items-center z-20">
+        <a href="index.html" class="text-sm font-semibold text-white hover:text-gray-300 transition flex items-center gap-2 drop-shadow-md">
+            &larr; Back to Home
+        </a>
+    </nav>
+
+    <header class="relative w-full h-[60vh] bg-gray-900 flex items-center justify-center">
+        <img src="images/cover.png" alt="Studio Portraits Cover" class="absolute inset-0 w-full h-full object-cover opacity-80">
+        
+        <div class="relative z-10 w-full max-w-6xl px-6 text-left">
+            <h1 class="text-5xl md:text-7xl font-bold text-white drop-shadow-lg tracking-tight">Studio Portraits</h1>
+        </div>
+    </header>
+
+    <section class="max-w-4xl mx-auto px-6 py-16 text-center">
+        <p class="text-lg md:text-xl text-gray-700 font-medium italic leading-relaxed">
+            "I am obsessed with creating mood and atmosphere using different lighting."
+        </p>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 pb-24">
+        <div class="masonry-grid-js">
+            
+            <div class="masonry-item">
+                <img src="images/p1.jpg" alt="Portrait 1" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p2.jpg" alt="Portrait 2" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p3.jpg" alt="Portrait 3" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p4.png" alt="Portrait 4" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p5.png" alt="Portrait 5" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p6.jpg" alt="Portrait 6" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p7.jpg" alt="Portrait 7" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p8.jpg" alt="Portrait 8" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p9.jpg" alt="Portrait 9" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p10.jpg" alt="Portrait 10" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p11.jpg" alt="Portrait 11" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p12.png" alt="Portrait 12" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p13.png" alt="Portrait 13" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p14.png" alt="Portrait 14" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p15.jpg" alt="Portrait 15" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p16.jpg" alt="Portrait 16" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p17.jpg" alt="Portrait 17" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+            <div class="masonry-item">
+                <img src="images/p18.jpg" alt="Portrait 18" class="w-full h-auto rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-gray-50 py-16 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+            
+            <div class="col-span-1 flex flex-col gap-6">
+                <a href="index.html" class="flex items-center gap-4 group hover:opacity-80 transition-opacity w-fit">
+                    <img src="images/self_thumbnail.jpeg" alt="Amanda Leung" class="w-16 h-16 rounded-full object-cover shadow-sm">
+                    <div>
+                        <h4 class="font-bold text-gray-900 text-lg group-hover:text-gray-700">Amanda Leung</h4>
+                        <p class="text-sm text-gray-500">UX Specialist</p>
+                    </div>
+                </a>
+                
+                <div class="flex gap-4">
+                    <a href="index.html" class="text-sm font-semibold text-gray-600 hover:text-gray-900 border-b border-transparent hover:border-gray-900 transition-colors pb-1">Works</a>
+                    <a href="about.html" class="text-sm font-semibold text-gray-600 hover:text-gray-900 border-b border-transparent hover:border-gray-900 transition-colors pb-1">About</a>
+                    <a href="CV_Leung Wing Tuen Amanda.pdf" target="_blank" class="text-sm font-semibold text-gray-600 hover:text-gray-900 border-b border-transparent hover:border-gray-900 transition-colors pb-1">Resume</a>
+                </div>
+            </div>
+
+            <div class="col-span-1 md:col-span-2 md:pl-12">
+                <h5 class="text-sm font-semibold text-gray-400 mb-6 uppercase tracking-wider">See next projects</h5>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <a href="shiftcam.html" class="flex items-center gap-4 bg-white p-3 rounded-lg border border-gray-200 hover:shadow-md transition-shadow group">
+                        <img src="images/shiftcam_footer_thumbnail.png" alt="ShiftCam" class="w-16 h-16 rounded object-cover border border-gray-100">
+                        <span class="font-semibold text-gray-700 group-hover:text-black">ShiftCam</span>
+                    </a>
+                    <a href="nhance.html" class="flex items-center gap-4 bg-white p-3 rounded-lg border border-gray-200 hover:shadow-md transition-shadow group">
+                        <img src="images/nhance_footer_thumbnail.png" alt="nHance" class="w-16 h-16 rounded object-cover border border-gray-100">
+                        <span class="font-semibold text-gray-700 group-hover:text-black">nHance</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 等待網頁上所有資源 (包括所有圖片檔案) 都載入完成後再執行
+        window.onload = function() {
+            var grid = document.querySelector('.masonry-grid-js');
+            
+            // 初始化 Masonry
+            var msnry = new Masonry( grid, {
+                // 指定哪一個 div 才是相片項目
+                itemSelector: '.masonry-item',
+                // 設定為百分比寬度，讓它在縮放螢幕時可以正確響應
+                percentPosition: true,
+                // 設定欄位的間距由樣式表 (padding) 決定
+                columnWidth: '.masonry-item',
+                // 減少空隙
+                gutter: 0,
+                // 自動對齊，盡量消除凹凸
+                horizontalOrder: true
+            });
+        };
+    </script>
+
+<div id="globalImageModal" class="fixed inset-0 z-50 hidden bg-black/90 flex items-center justify-center backdrop-blur-sm cursor-zoom-out">
+        <button id="closeGlobalModal" class="absolute top-6 right-8 text-white text-5xl font-light hover:text-gray-300 transition-colors">&times;</button>
+        <img id="globalModalImg" class="max-w-[92vw] max-h-[88vh] object-contain rounded-lg p-2 transition-transform duration-300" src="" alt="Enlarged View">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('globalImageModal');
+            const modalImg = document.getElementById('globalModalImg');
+            const closeBtn = document.getElementById('closeGlobalModal');
+
+            // 抓取頁面上所有的圖片
+            const allImages = document.querySelectorAll('img');
+
+            allImages.forEach(img => {
+                // 💡 自動過濾：如果是導航欄、Footer 的大頭貼、或 Next Project 的小縮圖，就不啟用放大功能
+                if (
+                    img.closest('footer') || 
+                    img.closest('nav') || 
+                    img.classList.contains('w-16') || 
+                    img.classList.contains('w-12')
+                ) {
+                    return; 
+                }
+
+                // 幫符合條件的專案大圖加上放大鏡手勢與微互動
+                img.classList.add('cursor-zoom-in', 'hover:opacity-95', 'transition-all', 'duration-200');
+
+                // 監聽點擊事件
+                img.addEventListener('click', () => {
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                    modal.classList.remove('hidden');
+                    // 加上禁止身體滾動，避免放大時背景還能偷滾動
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // 關閉燈箱的函式
+            const hideModal = () => {
+                modal.classList.add('hidden');
+                modalImg.src = '';
+                document.body.style.overflow = ''; // 恢復滾動
+            };
+
+            // 點擊關閉按鈕、或是點擊黑底背景時，都能關閉
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal || e.target === closeBtn || e.target === modalImg) {
+                    hideModal();
+                }
+            });
+
+            // 鍵盤個人化：按 ESC 鍵也能貼心關閉
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    hideModal();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

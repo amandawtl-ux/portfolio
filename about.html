@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Amanda Leung</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
+        
+        /* 隱藏橫向滾動條，但保留滾動功能 */
+        .hide-scroll-bar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hide-scroll-bar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-900">
+
+    <nav class="max-w-6xl mx-auto px-6 py-8 flex justify-between items-center bg-white sticky top-0 z-50">
+        <a href="index.html" class="text-sm font-semibold hover:text-gray-500 transition flex items-center gap-2">
+            &larr; Back to Home
+        </a>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-12 space-y-24">
+        
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div class="flex justify-center md:justify-end pr-0 md:pr-4">
+                <img src="images/about_profile.jpeg" alt="Amanda Leung" class="w-full max-w-md h-auto object-cover rounded-2xl shadow-lg">
+            </div>
+            <div class="flex flex-col items-start pl-0 md:pl-4">
+                <h1 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">About me</h1>
+                <p class="text-gray-600 leading-relaxed mb-8 text-sm md:text-base">
+                    Results-driven UX Research Specialist with a strong e-commerce background. Leverage mixed-methods research, competitive analysis, and data analytics to uncover the root causes of user friction and product gaps. Excel at translating complex user behaviors into actionable solutions. Collaborating cross-functionally, and utilizing AI workflows to elevate product quality.
+                </p>
+                <a href="mailto:amandawtl.al@gmail.com" class="inline-block px-6 py-2 border-2 border-yellow-400 text-gray-900 font-semibold rounded-full hover:bg-yellow-400 hover:text-white transition-colors text-sm">
+                    Contact Me
+                </a>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div class="flex flex-col items-start order-2 md:order-1 pr-0 md:pr-4">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Another me</h2>
+                <div class="text-gray-600 leading-relaxed mb-8 text-sm md:text-base space-y-4">
+                    <p>
+                        When I am not working, you can find me viewing the world from behind the lens of my favorite cameras. Taking pictures of people is something that I find enjoyable - I like talking to them and learning about their personalities.
+                    </p>
+                    <p>
+                        Portraits are an artistic representation of a person, it shows the background, personality and emotion of an individual. Studio portrait is my main focus. I am obsessed with creating mood and atmosphere using different lighting.
+                    </p>
+                    <p>
+                        Taking portraits also cultivates my interpersonal skill. By constantly communicating and interacting with others, I learned how to understand others' perspectives and understand their needs. For instance, when someone feels nervous and embarrassed in front of the camera, I know how to calm their nerves. When I press the shutter, I am used to engaging subjects by chatting with them. This is the best way to capture the most natural-looking portraits.
+                    </p>
+                </div>
+                <a href="https://amandaleungal.wixsite.com/photo" target="_blank" class="inline-block px-6 py-2 border-2 border-yellow-400 text-gray-900 font-semibold rounded-full hover:bg-yellow-400 hover:text-white transition-colors text-sm">
+                    Check Out My Portfolio
+                </a>
+            </div>
+            <div class="flex justify-center md:justify-start order-1 md:order-2 pl-0 md:pl-4">
+                <img src="images/about_camera.jpeg" alt="Holding Camera" class="w-full max-w-md h-auto object-cover rounded-2xl shadow-lg">
+            </div>
+        </section>
+
+    </main>
+
+    <section class="w-full pb-24 relative max-w-7xl mx-auto group">
+        
+        <button id="slideLeft" class="absolute left-2 md:left-8 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 hidden md:block border border-gray-200">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+
+        <button id="slideRight" class="absolute right-2 md:right-8 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 hidden md:block border border-gray-200">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+
+        <div id="carouselContainer" class="flex overflow-x-auto gap-6 px-6 md:px-12 hide-scroll-bar snap-x snap-mandatory py-8 scroll-smooth">
+            
+            <div class="snap-center shrink-0 w-64 md:w-80 h-auto aspect-[3/4]">
+                <img src="images/p1.jpg" alt="Portrait 1" class="w-full h-full object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="snap-center shrink-0 w-64 md:w-80 h-auto aspect-[3/4]">
+                <img src="images/p2.jpg" alt="Portrait 2" class="w-full h-full object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="snap-center shrink-0 w-64 md:w-80 h-auto aspect-[3/4]">
+                <img src="images/p3.jpg" alt="Portrait 3" class="w-full h-full object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="snap-center shrink-0 w-64 md:w-80 h-auto aspect-[3/4]">
+                <img src="images/p4.png" alt="Portrait 4" class="w-full h-full object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="snap-center shrink-0 w-64 md:w-80 h-auto aspect-[3/4]">
+                <img src="images/p5.png" alt="Portrait 5" class="w-full h-full object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="snap-center shrink-0 w-64 md:w-80 h-auto aspect-[3/4]">
+                <img src="images/p6.jpg" alt="Portrait 6" class="w-full h-full object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="snap-center shrink-0 w-64 md:w-80 h-auto aspect-[3/4]">
+                <img src="images/p7.jpg" alt="Portrait 7" class="w-full h-full object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-300">
+            </div>
+            
+        </div>
+    </section>
+
+    <script>
+        const container = document.getElementById('carouselContainer');
+        const leftBtn = document.getElementById('slideLeft');
+        const rightBtn = document.getElementById('slideRight');
+
+        // 設定每次點擊要滾動的距離 (大約是一張圖的寬度 + 間距)
+        const scrollAmount = 350; 
+
+        leftBtn.addEventListener('click', () => {
+            container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        rightBtn.addEventListener('click', () => {
+            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>

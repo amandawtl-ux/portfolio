@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-HK" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShiftCam Project - Amanda Leung</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .bg-shiftcam-dark { background-color: #222222; }
+        
+        /* 進度條橫線 */
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #e5e7eb;
+            z-index: -1;
+            transform: translateY(-50%);
+        }
+
+        /* 隱藏 Carousel 橫向滾動條 */
+        .hide-scroll-bar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hide-scroll-bar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <nav class="bg-shiftcam-dark text-white px-8 py-6 flex justify-between items-center shadow-md relative z-20">
+        <a href="index.html" class="text-base font-semibold hover:text-gray-300 transition flex items-center gap-2">
+            &larr; Back to Home
+        </a>
+    </nav>
+
+    <header class="relative flex items-center justify-center min-h-[50vh] bg-gray-900 overflow-hidden">
+        <img src="images/shiftcam_hero.jpg" alt="ShiftCam Banner" class="absolute inset-0 w-full h-full object-cover opacity-60">
+        <div class="relative z-10 flex flex-col items-center justify-center px-10 py-20 text-center mt-8">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">ShiftCam</h1>
+            <h2 class="text-xl md:text-3xl text-gray-100 max-w-3xl drop-shadow-md leading-relaxed">
+                End-to-End User Experience Optimization <br class="hidden md:block">for E-commerce
+            </h2>
+        </div>
+    </header>
+
+    <div id="sticky-progress" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md py-4 hidden md:block transition-all duration-300 w-full shadow-sm border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 relative flex items-center justify-between">
+            <div class="absolute left-[5%] right-[5%] top-[35%] h-[2px] bg-gray-200 z-0"></div>
+
+            <a href="#overview" class="progress-step relative z-10 flex flex-col items-center gap-2 group cursor-pointer" data-target="overview">
+                <div class="step-circle w-12 h-12 rounded-full border-2 border-gray-800 bg-gray-800 text-white flex items-center justify-center text-lg font-bold transition-colors duration-300">1</div>
+                <span class="step-text text-sm font-bold text-gray-900 transition-colors duration-300">Overview</span>
+            </a>
+            <a href="#phase1" class="progress-step relative z-10 flex flex-col items-center gap-2 group cursor-pointer" data-target="phase1">
+                <div class="step-circle w-12 h-12 rounded-full border-2 border-gray-400 bg-white text-gray-600 flex items-center justify-center text-lg font-bold transition-colors duration-300">2</div>
+                <span class="step-text text-sm font-medium text-gray-500 transition-colors duration-300">Phase 1</span>
+            </a>
+            <a href="#phase2" class="progress-step relative z-10 flex flex-col items-center gap-2 group cursor-pointer" data-target="phase2">
+                <div class="step-circle w-12 h-12 rounded-full border-2 border-gray-400 bg-white text-gray-600 flex items-center justify-center text-lg font-bold transition-colors duration-300">3</div>
+                <span class="step-text text-sm font-medium text-gray-500 transition-colors duration-300">Phase 2</span>
+            </a>
+            <a href="#phase3" class="progress-step relative z-10 flex flex-col items-center gap-2 group cursor-pointer" data-target="phase3">
+                <div class="step-circle w-12 h-12 rounded-full border-2 border-gray-400 bg-white text-gray-600 flex items-center justify-center text-lg font-bold transition-colors duration-300">4</div>
+                <span class="step-text text-sm font-medium text-gray-500 transition-colors duration-300">Phase 3</span>
+            </a>
+            <a href="#takeaways" class="progress-step relative z-10 flex flex-col items-center gap-2 group cursor-pointer" data-target="takeaways">
+                <div class="step-circle w-12 h-12 rounded-full border-2 border-gray-400 bg-white text-gray-600 flex items-center justify-center text-lg font-bold transition-colors duration-300">5</div>
+                <span class="step-text text-sm font-medium text-gray-500 transition-colors duration-300">Takeaways</span>
+            </a>
+        </div>
+    </div>
+
+    <section id="overview" class="bg-shiftcam-dark text-white pt-20 pb-16 border-b border-gray-800 scroll-mt-24">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h3 class="text-4xl font-bold mb-14 tracking-wide">Overview</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-base">
+                <div>
+                    <h4 class="font-bold text-2xl mb-6">Goal</h4>
+                    <p class="text-gray-300 leading-relaxed">To increase the <span class="font-bold text-white">overall conversion rate</span> of ShiftCam's e-commerce platform and optimize the <span class="font-bold text-white">end-to-end user journey</span>.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-2xl mb-6">My Role</h4>
+                    <p class="text-gray-300 leading-relaxed">Identified <span class="font-bold text-white">user pain points</span> across various funnel stages through <span class="font-bold text-white">data analysis, competitor analysis</span>, and <span class="font-bold text-white">in-depth user research</span>, providing <span class="font-bold text-white">actionable insights</span> for product and marketing strategies.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-2xl mb-6">Approach</h4>
+                    <p class="text-gray-300 leading-relaxed">Deconstructed the entire e-commerce experience into three core stages, <span class="font-bold text-white">Pre-purchase, Purchase, and Post-purchase</span>, to conduct targeted research and iterative improvements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="py-12 bg-white text-center border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6">
+            <img src="images/shiftcam_timeline.png" alt="Process Timeline" class="w-full h-auto mx-auto">
+        </div>
+    </div>
+
+    <section id="phase1" class="bg-shiftcam-dark text-white py-16 text-center flex flex-col justify-center items-center scroll-mt-24">
+        <h3 class="text-4xl md:text-5xl font-bold mb-2">Phase 1: Pre-purchase</h3>
+        <h3 class="text-4xl md:text-5xl font-bold mb-6">(Exploration & Acquisition)</h3>
+        <p class="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">Identify high-value user acquisition channels and optimize the top-of-funnel experience</p>
+    </section>
+
+    <div class="py-24 bg-white max-w-6xl mx-auto px-6 space-y-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="flex flex-col pr-0 md:pr-8">
+                <h4 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">1. Data Analysis</h4>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Deep-dived into <span class="font-bold text-gray-900">Google Analytics</span> (GA) data to <span class="font-bold text-gray-900">track user behavior</span> across different acquisition channels. Discovered that traffic generated from <span class="font-bold text-gray-900">Facebook Ads</span> yielded the highest conversion intent and average order value, establishing our primary focus for optimization.
+                </p>
+            </div>
+            <img src="images/shiftcam_data.png" alt="Google Analytics Data" class="w-full h-auto drop-shadow-md">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center flex-row-reverse">
+            <img src="images/shiftcam_competitor.png" alt="Competitor Ads Analysis" class="w-full h-auto drop-shadow-md order-2 md:order-1">
+            <div class="flex flex-col pl-0 md:pl-8 order-1 md:order-2">
+                <h4 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">2. Competitor Analysis</h4>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Conducted <span class="font-bold text-gray-900">in-depth competitor research</span> focusing on the Facebook Ads funnel. Analyzed how competitors utilized ad copy, visual assets, and landing page content to attract target audiences. This provided actionable insights for our marketing and design teams to refine their user acquisition strategies.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <section id="phase2" class="bg-shiftcam-dark text-white py-16 text-center flex flex-col justify-center items-center scroll-mt-24">
+        <h3 class="text-4xl md:text-5xl font-bold mb-2">Phase 2: Purchase</h3>
+        <h3 class="text-4xl md:text-5xl font-bold mb-6">(Decision-Making & Conversion)</h3>
+        <p class="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">Streamline the checkout process and reduce purchase friction</p>
+    </section>
+
+    <div class="py-24 bg-white max-w-6xl mx-auto px-6 space-y-32">
+        <div class="flex flex-col items-center">
+            <h4 class="text-3xl md:text-4xl font-bold mb-6 text-center text-gray-900">1. Qualitative Insights (The "US$1 Deposit" Campaign)</h4>
+            <p class="text-center text-gray-700 mb-12 max-w-4xl mx-auto text-lg leading-relaxed">
+                We launched a promotional campaign where users could pay a US$1 deposit to unlock an exclusive discount. However, data showed that the conversion rate among existing customers was significantly lower than expected.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mb-12 text-center">
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 shadow-sm">
+                    <h5 class="text-sm md:text-base font-extrabold tracking-widest uppercase mb-4 text-gray-900 border-b-2 border-gray-300 inline-block pb-1">Research Action</h5>
+                    <p class="text-gray-700 leading-relaxed text-lg mt-2">
+                        To identify the root cause, I designed and distributed <span class="font-bold text-gray-900">targeted surveys</span> with a segment of existing users. After ruling out hypotheses like "lack of product interest" or "aversion to upfront fees," the research revealed that the root cause was <span class="font-bold text-gray-900">incomplete product information</span> and <span class="font-bold text-gray-900">poor information architecture</span> on the campaign page, <span class="font-bold text-gray-900">leading to a lack of trust.</span>
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 shadow-sm">
+                    <h5 class="text-sm md:text-base font-extrabold tracking-widest uppercase mb-4 text-gray-900 border-b-2 border-gray-300 inline-block pb-1">Result</h5>
+                    <p class="text-gray-700 leading-relaxed text-lg mt-2">
+                        By <span class="font-bold text-gray-900">restructuring</span> the information architecture and refining the product details based on these insights, the <span class="font-bold text-gray-900">conversion rate</span> for the $1 deposit campaign <span class="font-bold text-gray-900">increased significantly.</span>
+                    </p>
+                </div>
+            </div>
+            <img src="images/shiftcam_insights.png" alt="Qualitative Insights Survey and Results" class="w-full h-auto drop-shadow-md mx-auto">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            <div class="md:col-span-5 flex flex-col items-center">
+                <img src="images/shiftcam_heatmaps.png" alt="Heatmaps Analysis" class="w-full h-auto drop-shadow-md rounded-lg">
+            </div>
+            
+            <div class="md:col-span-7 flex flex-col">
+                <h4 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">2. Observation & Heat-maps</h4>
+                <p class="text-gray-700 leading-relaxed text-lg mb-8">
+                    Monitored <span class="font-bold text-gray-900">real user profiles</span> and <span class="font-bold text-gray-900">negative comments on social media</span>. Combined this with <span class="font-bold text-gray-900">heat-map analysis</span> to understand click distribution and attention hotspots on our web pages, identifying visual blind spots that hindered the checkout process.
+                </p>
+                
+                <div class="relative w-full group mt-4">
+                    <div id="phase2Carousel" class="flex overflow-x-auto gap-6 hide-scroll-bar snap-x snap-mandatory scroll-smooth pb-4">
+                        <div class="snap-center shrink-0 w-full h-auto flex flex-col items-center">
+                            <img src="images/shiftcam_userprofiles.png" alt="Real User Profiles and Comments" class="w-full h-auto object-contain rounded-lg shadow-sm border border-gray-100 bg-gray-50">
+                            <p class="text-sm font-bold text-gray-800 mt-3 text-center">Real user profiles and comments</p>
+                        </div>
+                        <div class="snap-center shrink-0 w-full h-auto flex flex-col items-center">
+                            <img src="images/shiftcam_persona.png" alt="Persona and User Scenario" class="w-full h-auto object-contain rounded-lg shadow-sm border border-gray-100 bg-gray-50">
+                            <p class="text-sm font-bold text-gray-800 mt-3 text-center">Persona and User Scenarios</p>
+                        </div>
+                    </div>
+                    
+                    <button onclick="document.getElementById('phase2Carousel').scrollBy({left: -400, behavior: 'smooth'})" class="absolute left-2 top-[40%] transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity border border-gray-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button onclick="document.getElementById('phase2Carousel').scrollBy({left: 400, behavior: 'smooth'})" class="absolute right-2 top-[40%] transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity border border-gray-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center">
+            <h4 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900 text-center">3. Sitemap & Competitor Analysis</h4>
+            <p class="text-gray-700 mb-12 max-w-4xl mx-auto text-lg leading-relaxed text-center">
+                Executed <span class="font-bold text-gray-900">competitor analysis</span> to deconstruct and benchmark competitors' <span class="font-bold text-gray-900">sitemaps, page elements,</span> and <span class="font-bold text-gray-900">visual hierarchies.</span>
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
+                <div class="flex flex-col items-center">
+                    <img src="images/shiftcam_wireframes.png" alt="Sitemap Wireframes" class="w-full h-auto drop-shadow-md rounded-lg">
+                    <p class="text-sm font-bold text-gray-800 mt-3 text-center">Site Map Revamp</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="images/shiftcam_competitor2.png" alt="Competitor Analysis Elements" class="w-full h-auto drop-shadow-md rounded-lg">
+                    <p class="text-sm font-bold text-gray-800 mt-3 text-center">Competitor Analysis</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex flex-col items-center">
+            <h4 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">4. Iterative A/B Testing</h4>
+            <p class="text-gray-700 mb-10 max-w-4xl mx-auto text-lg leading-relaxed text-center">
+                Collaborated with <span class="font-bold text-gray-900">cross-functional teams</span> to systematically optimize the checkout and product pages based on the gathered insights. Validated effectiveness through <span class="font-bold text-gray-900">continuous A/B testing</span>, retaining the best-performing versions to achieve <span class="font-bold text-gray-900">data-driven product iteration.</span>
+            </p>
+            <img src="images/shiftcam_abtest.png" alt="A/B Testing Results" class="w-full md:w-2/3 h-auto drop-shadow-md mx-auto rounded-lg">
+        </div>
+    </div>
+
+    <section id="phase3" class="bg-shiftcam-dark text-white py-16 text-center flex flex-col justify-center items-center scroll-mt-24">
+        <h3 class="text-4xl md:text-5xl font-bold mb-2">Phase 3: Post-purchase</h3>
+        <h3 class="text-4xl md:text-5xl font-bold mb-6">(Retention & Feedback)</h3>
+        <p class="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">Build loyalty and gathering continuous feedback</p>
+    </section>
+
+    <div class="py-24 bg-white max-w-6xl mx-auto px-6 space-y-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <img src="images/shiftcam_social.png" alt="Social Listening" class="w-full h-auto drop-shadow-md rounded-lg">
+            <div class="flex flex-col">
+                <h4 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">1. Social Listening & Review Analysis</h4>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Regularly tracked <span class="font-bold text-gray-900">user comments on social media posts</span> and <span class="font-bold text-gray-900">product reviews on the website</span> to extract authentic sentiments regarding the physical products and the delivery experience.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center flex-row-reverse">
+            <div class="flex flex-col pr-0 md:pr-8">
+                <h4 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">2. Cross-functional Collaboration with Customer Service Team</h4>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Proactively established a close partnership with the <span class="font-bold text-gray-900">Customer Service (CS) team</span> to regularly aggregate and <span class="font-bold text-gray-900">analyze customer complaints and feedback.</span> By seeking systemic solutions for these pain points, we successfully optimized the post-purchase service flow, significantly reducing the Contacts Per Order (CPO) and the overall complaint rate.
+                </p>
+            </div>
+            <img src="images/shiftcam_cs.png" alt="Customer Service Insights" class="w-full h-auto drop-shadow-md rounded-lg">
+        </div>
+    </div>
+
+    <section id="takeaways" class="bg-[#1A1A1A] text-white py-16 text-center scroll-mt-24">
+        <h3 class="text-4xl md:text-5xl font-bold mb-4">Key Takeaways</h3>
+        <h3 class="text-2xl md:text-3xl font-bold mb-4">Mastering the Full Customer Journey</h3>
+        <p class="text-lg text-gray-300">Establish product quality monitoring and reduce complaint rates</p>
+    </section>
+
+    <div class="py-20 bg-white max-w-6xl mx-auto px-6">
+        <p class="text-lg md:text-xl text-gray-900 font-bold text-center leading-relaxed max-w-4xl mx-auto mb-20">
+            My experience at ShiftCam profoundly reinforced that UX Research should not be confined to interface design alone, but must account for the entire end-to-end customer journey
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
+            <div class="flex flex-col">
+                <h4 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-gray-100 pb-4">Breaking Silos</h4>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    The <span class="font-bold text-gray-900">user experience is continuous</span>—from an ad click (Pre-purchase) to page conversion (Purchase), and finally to customer service inquiries (Post-purchase). Analyzing data across the entire funnel allowed me to accurately pinpoint whether an issue originated from marketing acquisition, UI design, or post-purchase information asymmetry.
+                </p>
+            </div>
+            <div class="flex flex-col">
+                <h4 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-gray-100 pb-4">Identifying Root Causes</h4>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    When metrics underperformed (e.g., the $1 deposit campaign), I avoided blindly modifying the design. Instead, I leveraged <span class="font-bold text-gray-900">quantitative data and qualitative insights</span> to dig deep into the "Why," ensuring that the team's development resources were invested in resolving actual user problems.
+                </p>
+            </div>
+            <div class="flex flex-col">
+                <h4 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-gray-100 pb-4">Driving Business Impact</h4>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    This project taught me how to <span class="font-bold text-gray-900">translate UX insights into tangible business metrics</span>, such as increasing conversion rates and lowering CPO. As UX specialist, I act not only as the "voice of the user" but also as a <span class="font-bold text-gray-900">bridge driving commercial growth and product quality.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-50 py-16 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+            
+            <div class="col-span-1 flex flex-col gap-6">
+                <a href="index.html" class="flex items-center gap-4 group hover:opacity-80 transition-opacity w-fit">
+                    <img src="images/self_thumbnail.jpeg" alt="Amanda Leung" class="w-16 h-16 rounded-full object-cover shadow-sm">
+                    <div>
+                        <h4 class="font-bold text-gray-900 text-lg group-hover:text-gray-700">Amanda Leung</h4>
+                        <p class="text-sm text-gray-500">UX Specialist</p>
+                    </div>
+                </a>
+                
+                <div class="flex gap-4">
+                    <a href="index.html" class="text-sm font-semibold text-gray-600 hover:text-gray-900 border-b border-transparent hover:border-gray-900 transition-colors pb-1">Works</a>
+                    <a href="about.html" class="text-sm font-semibold text-gray-600 hover:text-gray-900 border-b border-transparent hover:border-gray-900 transition-colors pb-1">About</a>
+                    <a href="CV_Leung Wing Tuen Amanda.pdf" target="_blank" class="text-sm font-semibold text-gray-600 hover:text-gray-900 border-b border-transparent hover:border-gray-900 transition-colors pb-1">Resume</a>
+                </div>
+            </div>
+
+            <div class="col-span-1 md:col-span-2 md:pl-12">
+                <h5 class="text-sm font-semibold text-gray-400 mb-6 uppercase tracking-wider">See next projects</h5>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <a href="shiftcam.html" class="flex items-center gap-4 bg-white p-3 rounded-lg border border-gray-200 hover:shadow-md transition-shadow group">
+                        <img src="images/shiftcam_footer_thumbnail.png" alt="ShiftCam" class="w-16 h-16 rounded object-cover border border-gray-100">
+                        <span class="font-semibold text-gray-700 group-hover:text-black">ShiftCam</span>
+                    </a>
+                    <a href="nhance.html" class="flex items-center gap-4 bg-white p-3 rounded-lg border border-gray-200 hover:shadow-md transition-shadow group">
+                        <img src="images/nhance_footer_thumbnail.png" alt="nHance" class="w-16 h-16 rounded object-cover border border-gray-100">
+                        <span class="font-semibold text-gray-700 group-hover:text-black">nHance</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Carousel 控制
+        const container = document.getElementById('phase2Carousel');
+        if (container) {
+            // 事件已直接綁定在 HTML 按鈕的 onclick 中
+        }
+
+        // Progress Bar 滾動偵測腳本
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const steps = document.querySelectorAll('.progress-step');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const targetId = entry.target.getAttribute('id');
+                        
+                        steps.forEach(step => {
+                            const circle = step.querySelector('.step-circle');
+                            const text = step.querySelector('.step-text');
+                            
+                            if (step.getAttribute('data-target') === targetId) {
+                                // 啟動狀態 (黑底白字)
+                                circle.classList.remove('bg-white', 'text-gray-600', 'border-gray-400');
+                                circle.classList.add('bg-gray-800', 'text-white', 'border-gray-800');
+                                text.classList.remove('text-gray-500', 'font-medium');
+                                text.classList.add('text-gray-900', 'font-bold');
+                            } else {
+                                // 未啟動狀態 (白底灰字)
+                                circle.classList.add('bg-white', 'text-gray-600', 'border-gray-400');
+                                circle.classList.remove('bg-gray-800', 'text-white', 'border-gray-800');
+                                text.classList.add('text-gray-500', 'font-medium');
+                                text.classList.remove('text-gray-900', 'font-bold');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+<div id="globalImageModal" class="fixed inset-0 z-50 hidden bg-black/90 flex items-center justify-center backdrop-blur-sm cursor-zoom-out">
+        <button id="closeGlobalModal" class="absolute top-6 right-8 text-white text-5xl font-light hover:text-gray-300 transition-colors">&times;</button>
+        <img id="globalModalImg" class="max-w-[92vw] max-h-[88vh] object-contain rounded-lg p-2 transition-transform duration-300" src="" alt="Enlarged View">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('globalImageModal');
+            const modalImg = document.getElementById('globalModalImg');
+            const closeBtn = document.getElementById('closeGlobalModal');
+
+            // 抓取頁面上所有的圖片
+            const allImages = document.querySelectorAll('img');
+
+            allImages.forEach(img => {
+                // 💡 自動過濾：如果是導航欄、Footer 的大頭貼、或 Next Project 的小縮圖，就不啟用放大功能
+                if (
+                    img.closest('footer') || 
+                    img.closest('nav') || 
+                    img.classList.contains('w-16') || 
+                    img.classList.contains('w-12')
+                ) {
+                    return; 
+                }
+
+                // 幫符合條件的專案大圖加上放大鏡手勢與微互動
+                img.classList.add('cursor-zoom-in', 'hover:opacity-95', 'transition-all', 'duration-200');
+
+                // 監聽點擊事件
+                img.addEventListener('click', () => {
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                    modal.classList.remove('hidden');
+                    // 加上禁止身體滾動，避免放大時背景還能偷滾動
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // 關閉燈箱的函式
+            const hideModal = () => {
+                modal.classList.add('hidden');
+                modalImg.src = '';
+                document.body.style.overflow = ''; // 恢復滾動
+            };
+
+            // 點擊關閉按鈕、或是點擊黑底背景時，都能關閉
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal || e.target === closeBtn || e.target === modalImg) {
+                    hideModal();
+                }
+            });
+
+            // 鍵盤個人化：按 ESC 鍵也能貼心關閉
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    hideModal();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

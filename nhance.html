@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-HK" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nHance Project - Amanda Leung</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
+        /* nHance 品牌主色設定 */
+        .text-nhance { color: #b91c1c; } /* 品牌紅 */
+        .bg-nhance { background-color: #b91c1c; }
+        
+        /* 進度條橫線 */
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #e5e7eb;
+            z-index: -1;
+            transform: translateY(-50%);
+        }
+
+        /* 隱藏 Carousel 橫向滾動條 */
+        .hide-scroll-bar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hide-scroll-bar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <nav class="bg-gray-900 text-white px-8 py-6 flex justify-between items-center shadow-md relative z-20">
+        <a href="index.html" class="text-base font-semibold hover:text-gray-300 transition flex items-center gap-2">
+            &larr; Back to Home
+        </a>
+    </nav>
+
+    <header class="w-full">
+        <img src="images/nhance_hero.jpg" alt="nHance Banner" class="w-full h-auto block">
+    </header>
+
+    <section class="max-w-5xl mx-auto px-6 pt-16 pb-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
+            <div>
+                <h4 class="text-2xl font-bold text-nhance mb-4">Duration</h4>
+                <p class="text-gray-700">3.5 weeks (Jan - Feb 2022)</p>
+            </div>
+            <div>
+                <h4 class="text-2xl font-bold text-nhance mb-4">My Role</h4>
+                <p class="text-gray-700">UX/UI Designer</p>
+            </div>
+            <div>
+                <h4 class="text-2xl font-bold text-nhance mb-4">Team</h4>
+                <ul class="text-gray-700 list-disc list-inside space-y-1">
+                    <li>Edyth Wong - UX/UI Designer</li>
+                    <li>Rosie Yip - UX/UI Designer</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-2xl font-bold text-nhance mb-4">Tools</h4>
+                <ul class="text-gray-700 list-disc list-inside space-y-1">
+                    <li>Figma</li>
+                    <li>Miro</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div id="sticky-progress" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md py-4 hidden md:block transition-all duration-300 w-full mb-12 shadow-sm border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 relative flex items-center justify-between">
+            <div class="absolute left-[4%] right-[4%] top-[35%] h-[2px] bg-gray-200 z-0"></div>
+
+            <a href="#overview" class="progress-step relative z-10 flex flex-col items-center gap-2 group cursor-pointer" data-target="overview">
+                <div class="step-circle w-12 h-12 rounded-full border-2 border-gray-800 bg-gray-800 text-white flex items-center justify-center text-lg font-bold transition-colors duration-300">1</div>
+                <span class="step-text text-sm font-bold text-gray-900 transition-colors duration-300">Overview</span>
+            </a>
+            <a href="#research" class="progress-step relative z-10 flex flex-col items-center gap-2 group cursor-pointer" data-target="research">
+                <div class="step-circle w-12 h-12 rounded-full border-2 border-gray-400 bg-white text-gray-600 flex items-center justify-center text-lg font-bold transition-colors duration-300">2</div>
+                <span class="step-text text-sm font-medium text-gray-500 transition-colors duration-300">Research</span>
+            </a>
+            <a href="#painpoints" class="progress-step relative z-10 flex flex-col items-center gap-2 group cursor-pointer" data-target="painpoints">
+                <div class="step-circle w-12 h-12 rounded-full border-2 border-gray-400 bg-white text-gray-600 flex items-center justify-center text-lg font-bold transition-colors duration-300">3</div>
+                <span class="step-text text-sm font-medium text-gray-500 transition-colors duration-300">Pain Points</span>
+            </a>
+            <a href="#ideation" class="progress-step relative z-10 flex flex-col items-center gap-2 group cursor-pointer" data-target="ideation">
+                <div class="step-circle w-12 h-12 rounded-full border-2 border-gray-400 bg-white text-gray-600 flex items-center justify-center text-lg font-bold transition-colors duration-300">4</div>
+                <span class="step-text text-sm font-medium text-gray-500 transition-colors duration-300">Ideation</span>
+            </a>
+            <a href="#prototype" class="progress-step relative z-10 flex flex-col items-center gap-2 group cursor-pointer" data-target="prototype">
+                <div class="step-circle w-12 h-12 rounded-full border-2 border-gray-400 bg-white text-gray-600 flex items-center justify-center text-lg font-bold transition-colors duration-300">5</div>
+                <span class="step-text text-sm font-medium text-gray-500 transition-colors duration-300">Prototype</span>
+            </a>
+            <a href="#conclusion" class="progress-step relative z-10 flex flex-col items-center gap-2 group cursor-pointer" data-target="conclusion">
+                <div class="step-circle w-12 h-12 rounded-full border-2 border-gray-400 bg-white text-gray-600 flex items-center justify-center text-lg font-bold transition-colors duration-300">6</div>
+                <span class="step-text text-sm font-medium text-gray-500 transition-colors duration-300">Conclusion</span>
+            </a>
+        </div>
+    </div>
+
+    <section id="overview" class="bg-nhance py-12 text-center text-white mb-16 scroll-mt-20">
+        <h2 class="text-4xl md:text-5xl font-bold">Overview</h2>
+    </section>
+
+    <section class="max-w-5xl mx-auto px-6 space-y-16 pb-24">
+        <div>
+            <h3 class="text-3xl font-bold text-nhance mb-6">Background</h3>
+            <p class="text-gray-700 leading-relaxed text-lg">
+                innoWear is an <span class="font-bold text-gray-900">award-winning Hong Kong based company</span> founded in 2014. It designs and develops <span class="font-bold text-gray-900">IoT products</span> like fitness activity trackers innoBand. Innowear observed that, in the current market, users have to use several apps if they want to satisfy different aspects of wellness, including exercise measurements, calories recommendations, nutritional foods purchases and so on. In order to integrate all health data to improve user experience, innoWear is going to launch nHance, <span class="font-bold text-gray-900">an integrated product and service app for fitness and wellness.</span>
+            </p>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-nhance mb-6">Design Brief</h3>
+            <p class="text-gray-700 leading-relaxed mb-4 text-lg">There are 4 main features of nHance:</p>
+            <ol class="list-decimal list-inside text-gray-700 space-y-2 mb-6 ml-4 text-lg">
+                <li>Health data measurement</li>
+                <li>Fitness and wellness recommendation</li>
+                <li>In-app nutrition consultation</li>
+                <li>In-app food purchase</li>
+            </ol>
+            <p class="text-gray-700 leading-relaxed text-lg">
+                The project focuses on conducting <span class="font-bold text-gray-900">UX research</span> to determine users' needs, designing the <span class="font-bold text-gray-900">user flow</span> and the <span class="font-bold text-gray-900">app interfaces</span>, aiming to provide seamless experiences to users.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center pt-8">
+            <img src="images/nhance_process.png" alt="Design Process" class="w-full h-auto">
+            <div>
+                <h3 class="text-3xl font-bold text-nhance mb-4">Design Process</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    We started with conducting primary and secondary research, to identify pain points from the findings. Then we started ideation for the UI design and conducted usability tests to validate our design.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="bg-nhance py-12 text-center text-white mb-16 scroll-mt-20">
+        <h2 class="text-4xl md:text-5xl font-bold">Research</h2>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 space-y-24 pb-24">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h3 class="text-3xl font-bold text-nhance mb-6">Existing App Analysis</h3>
+                <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                    First and foremost, we began with analyzing the existing app interface to <span class="font-bold text-gray-900">spot the possible pain points.</span> After studying the existing app, we found out that we should do the following:
+                </p>
+                <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-2 text-lg">
+                    <li>Refine UX copy</li>
+                    <li>Revamp UI Design</li>
+                    <li>Redesign color palette (depends on the trademark's color)</li>
+                    <li>Add an onboarding system for new users</li>
+                    <li>Conduct user interviews, to understand what health data and features do users want to be included in nHance</li>
+                    <li>Design the user flow</li>
+                </ol>
+            </div>
+            <img src="images/nhance_existing_app.png" alt="Existing App Analysis" class="w-full h-auto">
+        </div>
+
+        <div class="flex flex-col items-center">
+            <h3 class="text-3xl font-bold text-nhance mb-6 text-center">Competitor Analysis</h3>
+            <p class="text-gray-700 leading-relaxed text-center max-w-4xl mb-12 text-lg">
+                After that, we conducted a competitor analysis, to identify competitors' strengths and weaknesses, and explore the room for improvement of nHance. We have analyzed on 3 platforms, including cure.fit, HealthifyMe and fitbit.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 w-full">
+                <img src="images/nhance_comp1.png" alt="cure.fit" class="w-full h-auto">
+                <img src="images/nhance_comp2.png" alt="HealthifyMe" class="w-full h-auto">
+                <img src="images/nhance_comp3.png" alt="fitbit" class="w-full h-auto">
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <img src="images/nhance_comp_table.png" alt="Competitor Features Table" class="w-full h-auto">
+                <div>
+                    <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                        We have then listed out some <span class="font-bold text-gray-900">key features</span> of these 3 platforms and compared them by drawing a table. By studying and comparing these features, we identified <span class="font-bold text-gray-900">what items are essential to a fitness and wellness app.</span> For example, weight tracking, sleeping hours tracking, food and drink record are some of the common measurements in these platforms. Therefore, nHance can include the above-mentioned items into its app.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        At the same time, we can take it as a reference, and add more features to nHance. For instance, nutrition recommendation, body goal plans, online personal trainer, community system, and premium account.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            <div class="md:col-span-4 flex flex-col space-y-12">
+                <div>
+                    <h3 class="text-3xl font-bold text-nhance mb-6">User Interviews</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4 text-lg">User interviews were conducted with 5 people, including users who wear and do not wear a fitness wearable devices.</p>
+                    <p class="text-gray-700 leading-relaxed mb-4 text-lg">The aims of the interviews are:</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg">
+                        <li>Identify the market of fitness wearable devices (e.g. fitness band, fitness watch)</li>
+                        <li>Understand users' fitness and wellbeing habit</li>
+                        <li>Understand users' preference on exercise, mental wellness and nutritional meals</li>
+                        <li>Explore the features that should be included in nHance</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-nhance mb-6">Affinity Map</h3>
+                    <p class="text-gray-700 leading-relaxed text-lg">An affinity map was conducted to help analyse the findings from the interviews.</p>
+                </div>
+            </div>
+            <div class="md:col-span-8">
+                <img src="images/nhance_affinity.png" alt="Affinity Map" class="w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <section id="painpoints" class="bg-nhance py-12 text-center text-white mb-16 scroll-mt-20">
+        <h2 class="text-4xl md:text-5xl font-bold">Pain Points</h2>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 space-y-24 pb-24">
+        
+        <div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="flex flex-col">
+                    <h3 class="text-2xl font-bold text-nhance mb-6">Key Insights</h3>
+                    <p class="text-gray-700 leading-relaxed text-lg mb-6">From the interviews, we obtained some important findings which help us <span class="font-bold text-gray-900">identify the pain points and needs of the users.</span><br><br>We have put the findings into 4 categories, including 1) Health Data, 2) Exercise, 3) Mental Wellness, 4) Meals.</p>
+                    <img src="images/nhance_insights.png" alt="Key Insights" class="w-full h-auto mt-auto">
+                </div>
+                <div class="flex flex-col">
+                    <h3 class="text-2xl font-bold text-nhance mb-6">Problem Statements</h3>
+                    <p class="text-gray-700 leading-relaxed text-lg mb-6">From the key insights, we generated the following problem statements:</p>
+                    <img src="images/nhance_problems.png" alt="Problem Statements" class="w-full h-auto mt-auto">
+                </div>
+                <div class="flex flex-col">
+                    <h3 class="text-2xl font-bold text-nhance mb-6">How might we...</h3>
+                    <p class="text-gray-700 leading-relaxed text-lg mb-6">With the key insights and problem statements, we better understood the pain points of the users in using a fitness and wellness app. We then identified 4 "How might we questions" for this project.</p>
+                    <img src="images/nhance_hmw.png" alt="How might we" class="w-full h-auto mt-auto">
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-nhance mb-6 text-center">Persona and Journey Map</h3>
+            <p class="text-gray-700 leading-relaxed text-center max-w-4xl mx-auto mb-16 text-lg">
+                In order to have a <span class="font-bold text-gray-900">deep understanding of nHance's target audience</span>, we created 3 personas based on these findings. Each of them was representing a group of users. We also created 3 journey maps for each of them, to visualize their experience of using nHance.
+            </p>
+
+            <div class="space-y-24">
+                <div>
+                    <h4 class="text-3xl font-bold text-nhance mb-6">1. Beginner</h4>
+                    <p class="text-gray-700 leading-relaxed mb-10 max-w-5xl text-lg">
+                        The first one is Charlie, who is a beginner in fitness. She doesn't exercise at all due to laziness and lack of motivation. She knows that she needs to exercise and has a healthy lifestyle, but she doesn't know how to start.<br><br>
+                        As she is a newbie in fitness, she doesn't really understand what is health data like calories intake is talking about. She also doesn't know how to choose an exercise tutorial video that suits her.<br><br>
+                        So what we can do for her is explain the health data with digestible description and visualization. And suggest the workout videos according to her body goal and activity level.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-4">
+                            <img src="images/nhance_charlie.png" alt="Charlie Persona" class="w-full h-auto">
+                        </div>
+                        <div class="md:col-span-8">
+                            <img src="images/nhance_charlie_map.png" alt="Charlie Journey Map" class="w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-3xl font-bold text-nhance mb-6">2. Amateur</h4>
+                    <p class="text-gray-700 leading-relaxed mb-10 max-w-5xl text-lg">
+                        The second persona is Edan, who is a fitness amateur. He is a teacher in high school, with extended working hours and a heavy workload, he is under pressure all the time. He likes to relieve stress by doing exercise. Recently, he started exploring eating healthy, but he is confused about the nutrition measurement.<br><br>
+                        Some of the pain points that Edan faces when using nHance are, he is not sure if he is able to do yoga to improve mental wellness. He is also not sure if he can eat delivery foods according to his eating habits and calories allocation.<br><br>
+                        What we can do for him is divide the metal wellness tutorial videos into different groups, to ensure that people with no related experience will be able to follow the instructions. Besides, we can show types of food, calories allocation, and food ingredients in the food delivery menu and nutritional recipes.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-4">
+                            <img src="images/nhance_edan.png" alt="Edan Persona" class="w-full h-auto">
+                        </div>
+                        <div class="md:col-span-8">
+                            <img src="images/nhance_edan_map.png" alt="Edan Journey Map" class="w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-3xl font-bold text-nhance mb-6">3. Fitness Fanatic</h4>
+                    <p class="text-gray-700 leading-relaxed mb-10 max-w-5xl text-lg">
+                        The third persona is Terence. He is a fitness fanatic who goes to the gym nearly every day. As part of his fitness goal, he wants to build the ideal body shape while maintaining proper nutrition. He tracks his health data every day and strives to become better.<br><br>
+                        When using nHance, the health data shown on the homepage is not sufficient enough for him to monitor his body situation. Moreover, he is doubtful about the professionalism of the workout videos.<br><br>
+                        Therefore, we can show the health data details on other pages. Regarding professionalism, we can cooperate with certificated trainers and professionals to film workout videos.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-4">
+                            <img src="images/nhance_terence.png" alt="Terence Persona" class="w-full h-auto">
+                        </div>
+                        <div class="md:col-span-8">
+                            <img src="images/nhance_terence_map.png" alt="Terence Journey Map" class="w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ideation" class="bg-nhance py-12 text-center text-white mb-16 scroll-mt-20">
+        <h2 class="text-4xl md:text-5xl font-bold">Ideation</h2>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 space-y-24 pb-24 border-b border-gray-200">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-5 flex flex-col pr-0 md:pr-8">
+                <h3 class="text-3xl font-bold text-nhance mb-6">Wireframes Sketches</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Integrated with the findings from the existing app analysis, competitor analysis and user interviews, we have come up with some ideas of the user flow and app interfaces. To better visualize the idea in our minds, we sketched it out on a whiteboard.
+                </p>
+            </div>
+            <div class="md:col-span-7">
+                <img src="images/nhance_sketches.png" alt="Wireframes Sketches" class="w-full h-auto">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-5 flex flex-col pr-0 md:pr-8">
+                <h3 class="text-3xl font-bold text-nhance mb-6">Low-fidelity Wireframes</h3>
+                <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                    After several rounds of discussion, we have wrapped up our ideas and created the low-fidelity wireframes.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    We have sent the wireframes to our client Chandan for review, then refined the wireframes according to his feedback.
+                </p>
+            </div>
+            <div class="md:col-span-7">
+                <img src="images/nhance_lofi.png" alt="Low-fidelity Wireframes" class="w-full h-auto">
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center">
+            <h3 class="text-3xl font-bold text-nhance mb-6 text-center">Usability Test</h3>
+            <p class="text-gray-700 leading-relaxed text-lg text-center max-w-4xl mb-12">
+                In order to <span class="font-bold text-gray-900">ensure that the flow and interfaces make sense to users</span>, we conducted 5 usability tests with potential users. Interviewees have given us a lot of valuable feedback, for instance, pointing out that some icons are confusing and suggesting adding a search filter function. We <span class="font-bold text-gray-900">kept refining our design</span> until all the bugs were fixed.
+            </p>
+            <img src="images/nhance_usability.png" alt="Usability Test Notes" class="w-full h-auto">
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-24 space-y-24">
+        <div class="text-center mb-16">
+            <h3 class="text-4xl font-bold text-nhance mb-6">App Map and User Flow</h3>
+            <p class="text-gray-700 leading-relaxed max-w-3xl mx-auto text-lg">We created an app map and user flow of each section (Health Data, Mental Wellness, Exercise, Meals) to clearly illustrate the structure of the app, and the relationship between different screens.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <img src="images/nhance_appmap.png" alt="App Map" class="w-full h-auto">
+            <img src="images/nhance_flow_home.png" alt="User Flow Homepage" class="w-full h-auto">
+            <img src="images/nhance_flow_onboard.png" alt="User Flow Onboarding" class="w-full h-auto">
+            <img src="images/nhance_flow_mental.png" alt="User Flow Mental Wellness" class="w-full h-auto">
+            <img src="images/nhance_flow_meals.png" alt="User Flow Meals" class="w-full h-auto mx-auto md:col-span-2 md:w-1/2">
+        </div>
+    </section>
+
+    <section id="prototype" class="bg-nhance py-12 text-center text-white mb-16 scroll-mt-20">
+        <h2 class="text-4xl md:text-5xl font-bold">Prototype</h2>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 space-y-32 pb-24">
+        
+        <div class="space-y-16">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3">
+                    <h3 class="text-3xl font-bold text-nhance mb-6">Onboarding</h3>
+                    <p class="font-bold text-gray-900 mb-4 text-lg">Key Features:</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg">
+                        <li>Login</li>
+                        <li>Sign up</li>
+                        <li>Mobile verification</li>
+                        <li>Profile creation</li>
+                        <li>Fitness goal setting</li>
+                    </ul>
+                </div>
+                <div class="md:w-2/3">
+                    <img src="images/nhance_proto_onboarding.gif" alt="Onboarding Screens" class="max-w-md h-auto mx-auto block">
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <h3 class="text-3xl font-bold text-nhance mb-6 w-full text-left">Homepage</h3>
+                <p class="font-bold text-gray-900 mb-4 text-lg w-full text-left">Key Features:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg w-full text-left mb-10">
+                    <li>Health data: steps, distance, calories, heart rate, hydration intake, food intake, sleeping hours</li>
+                    <li>Quick start guide</li>
+                    <li>Online consultation reminder</li>
+                    <li>Bookmark system</li>
+                </ul>
+                <img src="images/nhance_proto_homepage.png" alt="Homepage Screens" class="w-full h-auto mx-auto">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+            <div>
+                <h3 class="text-3xl font-bold text-nhance mb-6">Mental Wellness</h3>
+                <p class="font-bold text-gray-900 mb-4 text-lg">Key Features:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg mb-10">
+                    <li>Tutorial videos of meditation, yoga, relaxing music, natural sound</li>
+                </ul>
+                <img src="images/nhance_proto_mental.png" alt="Mental Wellness Screens" class="w-full h-auto">
+            </div>
+            <div>
+                <h3 class="text-3xl font-bold text-nhance mb-6">Workout</h3>
+                <p class="font-bold text-gray-900 mb-4 text-lg">Key Features:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg mb-10">
+                    <li>Tutorial videos of outdoor, indoor and gym workouts</li>
+                    <li>Running/ hiking/ cycling route suggestions</li>
+                    <li>Filter by difficulty: beginner, moderate, advanced</li>
+                    <li>Filter by body part: full body, abs, chest, arm, leg, shoulder and leg</li>
+                </ul>
+                <img src="images/nhance_proto_workout.png" alt="Workout Screens" class="w-full h-auto">
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-nhance mb-6 text-center">Meals - Online Consultation</h3>
+            <p class="font-bold text-gray-900 mb-4 text-lg text-center">Key Features:</p>
+            <ul class="list-disc text-gray-700 space-y-2 text-lg mb-10 max-w-md mx-auto">
+                <li>Nutritionist profile</li>
+                <li>Consultation booking system</li>
+                <li>Consultation booking record</li>
+            </ul>
+            <img src="images/nhance_proto_consult.png" alt="Consultation Screens" class="w-full h-auto mx-auto">
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-nhance mb-6 text-center">Meals - Food Delivery</h3>
+            <p class="font-bold text-gray-900 mb-4 text-lg text-center">Key Features:</p>
+            <ul class="list-disc text-gray-700 space-y-2 text-lg mb-10 max-w-2xl mx-auto">
+                <li>Restaurant list</li>
+                <li>Food menu</li>
+                <li>Food nutrition information</li>
+                <li>Ordering food system</li>
+                <li>Reminder if the calories of the chosen food exceed the daily limit</li>
+            </ul>
+            <img src="images/nhance_proto_delivery.png" alt="Food Delivery Screens" class="w-full h-auto mx-auto">
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-nhance mb-6 text-center">Meal - Recipe</h3>
+            <p class="font-bold text-gray-900 mb-4 text-lg text-center">Key Features:</p>
+            <ul class="list-disc text-gray-700 space-y-2 text-lg mb-10 max-w-xl mx-auto">
+                <li>Nutritional recipe list</li>
+                <li>Categorize by breakfast, lunch, dinner, snacks</li>
+                <li>Filter by calories range, diet, cuisine, difficulty, time</li>
+            </ul>
+            <img src="images/nhance_proto_recipe.png" alt="Recipe Screens" class="w-full h-auto mx-auto">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-5 flex flex-col pr-0 md:pr-8">
+                <h3 class="text-3xl font-bold text-nhance mb-6">Usability Test</h3>
+                <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                    To ensure that <span class="font-bold text-gray-900">all features are easy to use</span> and <span class="font-bold text-gray-900">the user flow makes sense to users</span>, we conducted 3 usability tests on the high-fidelity prototype. We asked interviewees to walk us through the process of using nHance, and asked them to speak up if there is anything confusing.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    We were pleased that <span class="font-bold text-gray-900">the overall feedback is positive</span>, they can use the app smoothly.
+                </p>
+            </div>
+            <div class="md:col-span-7">
+    <!-- 改用 w-1/2 縮小一半，並用 mx-auto block 居中 -->
+    <img src="images/nhance_proto_usability.png" alt="Prototype Usability Test Flow" class="w-2/5 h-auto mx-auto block">
+</div>
+        </div>
+
+    </section>
+
+    <section id="conclusion" class="bg-nhance py-12 text-center text-white mb-16 scroll-mt-20">
+        <h2 class="text-4xl md:text-5xl font-bold">Conclusion</h2>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 space-y-24 pb-24">
+        
+        <div class="text-center">
+            <h3 class="text-3xl font-bold text-nhance mb-6">Recommendations</h3>
+            <p class="text-gray-700 leading-relaxed max-w-4xl mx-auto text-lg mb-12">
+                Throughout the process of UX research and UI design, we have come up with some ideas that nHance can implement in the future stage.
+            </p>
+            <img src="images/nhance_recommendations.png" alt="Recommendations Cards" class="w-full h-auto mx-auto">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-7 flex flex-col pr-0 md:pr-8">
+                
+                <h3 class="text-3xl font-bold text-nhance mb-6">Outcome</h3>
+                <p class="text-gray-700 leading-relaxed text-lg mb-16">
+                    Our client Chandan was very surprised to see the result we have achieved in just 3.5 weeks. He said our work was <span class="font-bold text-gray-900">exceptionally well, much beyond what he expected</span>. He was so excited to tell us that he would take most of the design and pass the design files to their developers to further develop the idea.
+                </p>
+
+                <h3 class="text-3xl font-bold text-nhance mb-6">Takeaways</h3>
+                <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                    Throughout this project, I have applied what I have learnt about UX/UI for the past 16 weeks - <span class="font-bold text-gray-900">identify pain points</span> from UX research, constantly <span class="font-bold text-gray-900">test the idea and design</span> with users, <span class="font-bold text-gray-900">get feedback</span> from them and <span class="font-bold text-gray-900">keep iterating</span>.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Besides, this project has sharpened my UI skills, it inspired me to <span class="font-bold text-gray-900">create animation by prototyping</span> in Figma.
+                </p>
+            </div>
+            
+            <div class="md:col-span-5 flex justify-center">
+    <img src="images/nhance_outcome_phone.gif" alt="Setting up nHance App" class="w-1/2 h-auto">
+</div>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-3xl font-bold text-nhance mb-6">Reflections</h3>
+            <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                This is definitely a fun and exciting project for us. This project also proved that <span class="font-bold text-gray-900">teamwork makes the dream work</span>. Three of us have different skills and personalities - one of us has a brilliant aesthetic sense, one of us has a clear logical mind, one of us is well-planned and well-organized. When we work together, we can <span class="font-bold text-gray-900">make the best out of ourselves and learn from each other</span>.
+            </p>
+            <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                I remembered when Kaleb, our inspiring instructor, was illustrating the concept of design thinking, he shared a quote from Henry Ford: <i class="text-gray-500">“If I had asked people what they wanted, they would have said faster horses.”</i> It implies that users do not directly offer the solution, they just tell us what the problem is. As a UX/UI designer, our role is to <span class="font-bold text-gray-900">translate the pain points into opportunities</span> and <span class="font-bold text-gray-900">create solutions that can solve users' problems</span>.
+            </p>
+            <p class="text-gray-700 leading-relaxed text-lg">
+                Regarding teamwork, I would like to share another quote from Henry Ford: <i class="text-gray-500">“Coming together is a beginning, staying together is progress, and working together is success.”</i> <span class="font-bold text-gray-900">Being collaborative is one of the essential skills of a UX/UI designer</span>. In the future, we will need to work together within the design team and with the development team and other stakeholders. Let's not forget <span class="font-bold text-gray-900">teamwork is the key to success!</span>
+            </p>
+        </div>
+
+    </section>
+
+    <section class="bg-nhance py-20 text-center text-white">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">Thank you for reading!</h2>
+        <p class="text-xl text-gray-200">Let's share ideas & discuss ways to collaborate!</p>
+    </section>
+
+    <footer class="bg-gray-50 py-16 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+            <div class="col-span-1 flex flex-col gap-6">
+                <a href="index.html" class="flex items-center gap-4 group hover:opacity-80 transition-opacity w-fit">
+                    <img src="images/self_thumbnail.jpeg" alt="Amanda Leung" class="w-16 h-16 rounded-full object-cover shadow-sm">
+                    <div>
+                        <h4 class="font-bold text-gray-900 text-lg group-hover:text-gray-700">Amanda Leung</h4>
+                        <p class="text-sm text-gray-500">UX Specialist</p>
+                    </div>
+                </a>
+                <div class="flex gap-4">
+                    <a href="index.html" class="text-sm font-semibold text-gray-600 hover:text-gray-900 border-b border-transparent hover:border-gray-900 transition-colors pb-1">Works</a>
+                    <a href="about.html" class="text-sm font-semibold text-gray-600 hover:text-gray-900 border-b border-transparent hover:border-gray-900 transition-colors pb-1">About</a>
+                    <a href="CV_Leung Wing Tuen Amanda.pdf" target="_blank" class="text-sm font-semibold text-gray-600 hover:text-gray-900 border-b border-transparent hover:border-gray-900 transition-colors pb-1">Resume</a>
+                </div>
+            </div>
+            <div class="col-span-1 md:col-span-2 md:pl-12">
+                <h5 class="text-sm font-semibold text-gray-400 mb-6 uppercase tracking-wider">See next projects</h5>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <a href="shiftcam.html" class="flex items-center gap-4 bg-white p-3 rounded-lg border border-gray-200 hover:shadow-md transition-shadow group">
+                        <img src="images/shiftcam_footer_thumbnail.png" alt="ShiftCam" class="w-16 h-16 rounded object-cover border border-gray-100">
+                        <span class="font-semibold text-gray-700 group-hover:text-black">ShiftCam</span>
+                    </a>
+                    <a href="nhance.html" class="flex items-center gap-4 bg-white p-3 rounded-lg border border-gray-200 hover:shadow-md transition-shadow group">
+                        <img src="images/nhance_footer_thumbnail.png" alt="nHance" class="w-16 h-16 rounded object-cover border border-gray-100">
+                        <span class="font-semibold text-gray-700 group-hover:text-black">nHance</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const steps = document.querySelectorAll('.progress-step');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const targetId = entry.target.getAttribute('id');
+                        
+                        steps.forEach(step => {
+                            const circle = step.querySelector('.step-circle');
+                            const text = step.querySelector('.step-text');
+                            
+                            if (step.getAttribute('data-target') === targetId) {
+                                circle.classList.remove('bg-white', 'text-gray-600', 'border-gray-400');
+                                circle.classList.add('bg-gray-800', 'text-white', 'border-gray-800');
+                                text.classList.remove('text-gray-500', 'font-medium');
+                                text.classList.add('text-gray-900', 'font-bold');
+                            } else {
+                                circle.classList.add('bg-white', 'text-gray-600', 'border-gray-400');
+                                circle.classList.remove('bg-gray-800', 'text-white', 'border-gray-800');
+                                text.classList.add('text-gray-500', 'font-medium');
+                                text.classList.remove('text-gray-900', 'font-bold');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+<div id="globalImageModal" class="fixed inset-0 z-50 hidden bg-black/90 flex items-center justify-center backdrop-blur-sm cursor-zoom-out">
+        <button id="closeGlobalModal" class="absolute top-6 right-8 text-white text-5xl font-light hover:text-gray-300 transition-colors">&times;</button>
+        <img id="globalModalImg" class="max-w-[92vw] max-h-[88vh] object-contain rounded-lg p-2 transition-transform duration-300" src="" alt="Enlarged View">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('globalImageModal');
+            const modalImg = document.getElementById('globalModalImg');
+            const closeBtn = document.getElementById('closeGlobalModal');
+
+            // 抓取頁面上所有的圖片
+            const allImages = document.querySelectorAll('img');
+
+            allImages.forEach(img => {
+                // 💡 自動過濾：如果是導航欄、Footer 的大頭貼、或 Next Project 的小縮圖，就不啟用放大功能
+                if (
+                    img.closest('footer') || 
+                    img.closest('nav') || 
+                    img.classList.contains('w-16') || 
+                    img.classList.contains('w-12')
+                ) {
+                    return; 
+                }
+
+                // 幫符合條件的專案大圖加上放大鏡手勢與微互動
+                img.classList.add('cursor-zoom-in', 'hover:opacity-95', 'transition-all', 'duration-200');
+
+                // 監聽點擊事件
+                img.addEventListener('click', () => {
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                    modal.classList.remove('hidden');
+                    // 加上禁止身體滾動，避免放大時背景還能偷滾動
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // 關閉燈箱的函式
+            const hideModal = () => {
+                modal.classList.add('hidden');
+                modalImg.src = '';
+                document.body.style.overflow = ''; // 恢復滾動
+            };
+
+            // 點擊關閉按鈕、或是點擊黑底背景時，都能關閉
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal || e.target === closeBtn || e.target === modalImg) {
+                    hideModal();
+                }
+            });
+
+            // 鍵盤個人化：按 ESC 鍵也能貼心關閉
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    hideModal();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
